@@ -2,15 +2,20 @@ var App = {};
 App.data = {};
 App.videos = [];
 App.render = function () {
+
+    var itemsToTake = parseInt($('input[name=items]:checked').val());
+    App.videos = _.take(App.data.data, itemsToTake);
     App.optVideos = [];
     App.videos.forEach(function (video) {
         var optVideo = {};
+        optVideo.id = video.resource_key;
         if (video.user.pictures) {
             optVideo.user_image_url = video.user.pictures.sizes[video.user.pictures.sizes.length - 1].link;
         }
         optVideo.user_name = video.user.name;
         optVideo.user_link = video.user.link;
-        optVideo.short_description = video.description;
+        optVideo.short_description = video.description.substring(0,20);
+        optVideo.description = video.description;
 
         optVideo.name = video.name;
         optVideo.link = video.link;
@@ -51,4 +56,8 @@ App.loadVideos = function () {
 
 $(document).ready(function () {
     App.loadVideos();
+
+    $('input[type=radio][name=items]').change(function () {
+        App.render();
+    });
 });
