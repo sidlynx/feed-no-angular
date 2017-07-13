@@ -5,14 +5,104 @@
     <title>feed no angular</title>
     <link rel="stylesheet" href="node_modules/tether/dist/css/tether.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<div class="container-fluid" style="height: 50px;
+    ">
+    <div class="row" style="border:1px solid green;">
+        <nav class="navbar fixed-top navbar-light bg-faded" style="
+    height: 50px;padding:0px;
+background-color: rgba(255, 255, 255, 0.97);
+/*
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    */
+    border-top:3px solid #f15b27;border-bottom: 1px solid #e4e6e8;">
+            <div class="container no-paddin no-margi" style="height: 100%;background-color: transparent;margin:auto;">
+                <div class="row no-paddin no-margi" style="height: 50px !important;padding: 14px 0px 20px !important;">
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
 
 
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/tether/dist/js/tether.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12" style="text-align:center;">
+            <img src="https://pbs.twimg.com/profile_banners/209708391/1447367241/1500x500"
+                 style="margin-left:auto;margin-right:auto;"
+            />
+        </div>
+    </div>
+</div>
+
+<div class="container" style="border:1px solid red;">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6" style="background-color:#fff;" id="target">
+
+            <div class="card" style="">
+                <div class="card-block" style="padding: 0px;">
+                    <div class="row">
+                        <div class="col-2" style="text-align:center;">
+                            <img src="https://i.vimeocdn.com/portrait/1794799_300x300" style="max-width:48px;border-radius:50%;margin:auto;"/>
+                        </div>
+                        <div class="col-8">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>
+                                        <a href="https://vimeo.com/terjes">TSO Photography</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 12px;color:grey;">
+                                        125 plays|56 comments|30 likes
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <img class="card-img-top"
+                     style="max-width:100%;"
+                     src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F145026168_1280x720.jpg&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">
+                        <a href="https://www.vimeo.com//apps/1264">Vimeo Desktop Uploader</a>
+                    </h4>
+                    <p class="card-text" style="font-size:13px;">
+                        Follow on:↵https://facebook.com/TSOphotography for more photos, videos and updates. ↵↵This was filmed between 4th and 11th April 2011. I had the pleasure of visiting El Teide.↵Spain´s highest mountain  @(3718m) is one of the best places in the world to photograph the stars and is also the location of Teide Observatories, considered to be one of the world´s best observatories. ↵↵The goal was to capture the beautiful Milky Way galaxy along with one of the most amazing mountains I know El Teide. I have to say this was one of the most exhausting trips I have done. There was a lot of hiking at high altitudes and probably less than 10 hours of sleep in total for the whole week. Having been here 10-11 times before I had a long list of must-see locations I wanted to capture for this movie, but I am still not 100% used to carrying around so much gear required for time-lapse movies.↵ ↵A large sandstorm hit the Sahara Desert on the 9th April (http://bit.ly/g3tsDW) and at approx 3am in the night the sandstorm hit me, making  it nearly impossible to see the sky with my own eyes.↵↵Interestingly enough my camera was set for a 5 hour sequence of the milky way during this time and I was sure my whole scene was ruined. To my surprise, my camera had managed to capture the sandstorm which was backlit by Grand Canary Island making it look like golden clouds. The Milky Way was shining through the clouds, making the stars sparkle in an interesting way. So if you ever wondered how the Milky Way would look through a Sahara sandstorm, look at 00:32.↵↵Available in Digital Cinema 4k.↵↵Follow Facebook: http://www.facebook.com/TSOPhotography↵Follow Twitter:↵http://twitter.com/TSOPhotography↵Follow Google+:↵https://plus.google.com/107543460658107759808↵↵Press/licensing/projects contact: tsophotography@gmail.com↵↵↵Music by my friend: Ludovico Einaudi - "Nuvole bianche" with permission. ↵Please support the artist here:↵http://itunes.apple.com/us/album/una-mattina/id217799399
+                    </p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+<script src="node_modules/jquery/dist/jquery.min.js "></script>
+<script src="node_modules/tether/dist/js/tether.min.js "></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js "></script>
+<script src="node_modules/mustache/mustache.js"></script>
+<script src="node_modules/lodash/lodash.js"></script>
+
+
+<script src="app.js"></script>
+
+
+<script id="template" type="x-tmpl-mustache">
+        {{#videos}}
+        <div class <b>{{app.name}}</b>
+        {{/videos}}
+
+</script>
 </body>
 
 </html>
