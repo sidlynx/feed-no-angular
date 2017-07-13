@@ -44,7 +44,7 @@ background-color: rgba(255, 255, 255, 0.97);
 <div class="container" style="border:1px solid red;">
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-6" style="background-color:#fff;" id="target">
+        <div class="col-6" style="background-color:#fffa;" id="target">
 
             <div class="card" style="">
                 <div class="card-block" style="padding: 0px;">
@@ -98,9 +98,46 @@ background-color: rgba(255, 255, 255, 0.97);
 
 
 <script id="template" type="x-tmpl-mustache">
-        {{#videos}}
-        <div class <b>{{app.name}}</b>
-        {{/videos}}
+        {{#optVideos}}
+            <div class="card" style="margin-top:4px;">
+                <div class="card-block" style="padding: 0px;">
+                    <div class="row">
+                        <div class="col-2" style="text-align:center;">
+                            <img src="{{user_image_url}}" style="max-width:48px;border-radius:50%;margin:auto;"/>
+                        </div>
+                        <div class="col-8">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>
+                                        <a href="{{user_link}}">{{user_name}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 12px;color:grey;">
+                                        125 plays | {{comments_count}} comments | {{comments_count}} likes
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <img class="card-img-top"
+                     style="max-width:100%;"
+                     src="{{image_url}}" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">
+                        <a href="{{link}}">{{name}}</a>
+                    </h4>
+                    <p class="card-text" style="font-size:13px;">
+                        Follow on:↵https://facebook.com/TSOphotography for more photos, videos and updates. ↵↵This was filmed between 4th and 11th April 2011. I had the pleasure of visiting El Teide.↵Spain´s highest mountain  @(3718m) is one of the best places in the world to photograph the stars and is also the location of Teide Observatories, considered to be one of the world´s best observatories. ↵↵The goal was to capture the beautiful Milky Way galaxy along with one of the most amazing mountains I know El Teide. I have to say this was one of the most exhausting trips I have done. There was a lot of hiking at high altitudes and probably less than 10 hours of sleep in total for the whole week. Having been here 10-11 times before I had a long list of must-see locations I wanted to capture for this movie, but I am still not 100% used to carrying around so much gear required for time-lapse movies.↵ ↵A large sandstorm hit the Sahara Desert on the 9th April (http://bit.ly/g3tsDW) and at approx 3am in the night the sandstorm hit me, making  it nearly impossible to see the sky with my own eyes.↵↵Interestingly enough my camera was set for a 5 hour sequence of the milky way during this time and I was sure my whole scene was ruined. To my surprise, my camera had managed to capture the sandstorm which was backlit by Grand Canary Island making it look like golden clouds. The Milky Way was shining through the clouds, making the stars sparkle in an interesting way. So if you ever wondered how the Milky Way would look through a Sahara sandstorm, look at 00:32.↵↵Available in Digital Cinema 4k.↵↵Follow Facebook: http://www.facebook.com/TSOPhotography↵Follow Twitter:↵http://twitter.com/TSOPhotography↵Follow Google+:↵https://plus.google.com/107543460658107759808↵↵Press/licensing/projects contact: tsophotography@gmail.com↵↵↵Music by my friend: Ludovico Einaudi - "Nuvole bianche" with permission. ↵Please support the artist here:↵http://itunes.apple.com/us/album/una-mattina/id217799399
+                    </p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+
+
+        {{/optVideos}}
 
 </script>
 </body>
