@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/sidlynx/feed-no-angular/issues"
   },
-  "homepage": "https://github.com/sidlynx/feed-no-angular#readme"
+  "homepage": "https://github.com/sidlynx/feed-no-angular#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "jquery": "^3.2.1",
+    "tether": "^1.4.0"
+  }
 }
