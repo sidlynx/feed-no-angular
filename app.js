@@ -1,10 +1,12 @@
 var App = {};
 App.data = {};
 App.videos = [];
+App.page = 1;
 App.render = function () {
-
+    //
+    App.videos = App.data.data;
+    var search = $("#search").val();
     var itemsToTake = parseInt($('input[name=items]:checked').val());
-    App.videos = _.take(App.data.data, itemsToTake);
     App.optVideos = [];
     App.videos.forEach(function (video) {
         var optVideo = {};
@@ -14,8 +16,12 @@ App.render = function () {
         }
         optVideo.user_name = video.user.name;
         optVideo.user_link = video.user.link;
-        optVideo.short_description = video.description.substring(0,20);
+
         optVideo.description = video.description;
+
+        if(optVideo.description){
+            optVideo.short_description = optVideo.description.substring(0,20);
+        }
 
         optVideo.name = video.name;
         optVideo.link = video.link;
@@ -28,7 +34,11 @@ App.render = function () {
         optVideo.likes_count = video.metadata.connections.likes.total;
 
 
-        App.optVideos.push(optVideo);
+        if(optVideo.description && optVideo.description.indexOf(search) >= 0){
+            App.optVideos.push(optVideo);
+        }
+
+        App.optVideos = _.take(App.optVideos,itemsToTake);
     })
 
 
@@ -58,6 +68,14 @@ $(document).ready(function () {
     App.loadVideos();
 
     $('input[type=radio][name=items]').change(function () {
+        App.render();
+    });
+
+    $("#search").change(function() {
+        App.render();
+    });
+
+    $("#search").keyup(function() {
         App.render();
     });
 });
