@@ -1,0 +1,19 @@
+{
+  "name": "feed-no-angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidlynx/feed-no-angular.git"
+  },
+  "author": "Mohammed Hamdoune (sidlynx@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sidlynx/feed-no-angular/issues"
+  },
+  "homepage": "https://github.com/sidlynx/feed-no-angular#readme"
+}
