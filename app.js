@@ -1,18 +1,27 @@
 var App = {};
 App.data = {};
+App.allVideos = [];
 App.videos = [];
-App.transformedVideos = [];
-App.searchedVideos = [];
-App.page = 1;
-App.totalPages = 0;
+App.videosToShow = [];
+App.page = 0;
+
 App.render = function () {
-    App.videos = App.data.data;
-    var search = $("#search").val();
-    var itemsToTake = parseInt($('input[name=items]:checked').val());
-    App.optVideos = [];
+    var $_search = $("#search").val();
+    var $_10_likes = $('#10_likes').is(":checked");
+    var $_items_to_take = parseInt($('input[name=items]:checked').val());
 
+    App.videos = App.allVideos;
 
-    App.optVideos = _.take(App.optVideos, itemsToTake);
+    App.videos = App.searchVideos(App.videos, $_search);
+
+    if ($_10_likes) {
+        App.videos = App.filterVideos(App.videos);
+    }
+
+    if (App.page < 0) App.page = 0;
+    else if (App.page > (App.paginateVideos(App.videos, $_items_to_take).length - 1)) App.page = App.paginateVideos(App.videos, $_items_to_take).length - 1;
+
+    App.videosToShow = App.paginateVideos(App.videos, $_items_to_take)[App.page];
 
 
     var template = $('#template').html();
@@ -21,22 +30,18 @@ App.render = function () {
     $('#target').html(rendered);
 
 }
-
 App.loadVideos = function () {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             App.data = JSON.parse(this.responseText);
-            App.videos = _.take(App.data.data, 10);
-            console.log(App.videos);
+            App.allVideos = App.transformVideos(App.data.data);
             App.render();
         }
     };
     xhttp.open("GET", "videos.json", true);
     xhttp.send();
 }
-
-
 App.transformVideos = function (videos) {
     var tempVideos = [];
     videos.forEach(function (video) {
@@ -64,12 +69,14 @@ App.transformVideos = function (videos) {
         optVideo.comments_count = video.metadata.connections.comments.total;
         optVideo.likes_count = video.metadata.connections.likes.total;
 
+        if (video.user.metadata.connections.likes.total) {
+            optVideo.user_likes_count = video.user.metadata.connections.likes.total;
+        }
+
         tempVideos.push(optVideo);
-
-        return tempVideos;
     })
+    return tempVideos;
 }
-
 App.searchVideos = function (videos, search) {
     var tempVideos = [];
     videos.forEach(function (video) {
@@ -79,13 +86,17 @@ App.searchVideos = function (videos, search) {
     })
     return tempVideos;
 }
-
-App.next = function(videos,page){
-
+App.filterVideos = function (videos) {
+    var tempVideos = [];
+    videos.forEach(function (video) {
+        if (video.user_likes_count >= 0) tempVideos.push(video);
+    })
+    return tempVideos;
 }
-App.previous = function(){
-
+App.paginateVideos = function (videos, items_per_page) {
+    return _.chunk(videos, items_per_page);
 }
+
 
 $(document).ready(function () {
     App.loadVideos();
@@ -103,10 +114,16 @@ $(document).ready(function () {
     });
 
     $("#prev").click(function () {
-        App.previous();
+        App.page--;
+        App.render();
     });
 
     $("#next").click(function () {
-        App.next();
+        App.page++;
+        App.render();
+    });
+
+    $("#10_likes").change(function () {
+        App.render();
     });
 });
