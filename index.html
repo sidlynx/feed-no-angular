@@ -5,6 +5,7 @@
     <title>feed no angular</title>
     <link rel="stylesheet" href="node_modules/tether/dist/css/tether.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -168,7 +169,7 @@ background-color: rgba(255, 255, 255, 0.97);
                                 </tr>
                                 <tr>
                                     <td style="font-size: 12px;color:grey;">
-                                        125 plays | {{comments_count}} comments | {{comments_count}} likes
+                                        <i class="fa fa-eye"></i> 125 | <i class="fa fa-comment"></i> {{comments_count}} | <i class="fa fa-heart"></i> {{likes_count}}
                                     </td>
                                 </tr>
                             </table>
