@@ -41,7 +41,7 @@ background-color: rgba(255, 255, 255, 0.97);
     </div>
 </div>
 
-<div class="container" style="border:1px solid red;">
+<div class="container" style="">
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6" style="background-color:#fffa;">
@@ -64,10 +64,7 @@ background-color: rgba(255, 255, 255, 0.97);
                     <div>
                         <input type="text" id="search" class="form-control" placeholder="search"/>
                     </div>
-                    <div>
-                        <button class="btn btn-primary" id="prev">Prev</button>
-                        <button class="btn btn-primary" id="next" style="float: right;">Next</button>
-                    </div>
+
             </div>
 
 
@@ -133,6 +130,11 @@ background-color: rgba(255, 255, 255, 0.97);
                 </div>
             </div>
 
+            <div style="margin-top:4px;background-color:#fff;">
+                <button class="btn btn-primary btn-sm" id="prev" style="cursor:pointer;">Prev</button>
+                <button class="btn btn-primary btn-sm" id="next" style="float: right;cursor:pointer;">Next</button>
+            </div>
+
         </div>
         <div class="col-3"></div>
     </div>
@@ -161,7 +163,7 @@ background-color: rgba(255, 255, 255, 0.97);
                             <table style="width:100%;">
                                 <tr>
                                     <td>
-                                        <a href="{{user_link}}">{{user_name}}</a>
+                                        <a href="{{user_link}}" style="font-weight:bold;">{{user_name}}</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,8 +176,8 @@ background-color: rgba(255, 255, 255, 0.97);
                     </div>
                 </div>
                 <img class="card-img-top"
-                     style="max-width:100%;"
-                     src="{{image_url}}" alt="Card image cap">
+                     style="max-width:100%;cursor:pointer;"
+                     src="{{image_url}}" alt="Card image cap" onclick="location.href='{{link}}'">
                 <div class="card-block">
                     <h4 class="card-title">
                         <a href="{{link}}">{{name}}</a>

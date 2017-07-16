@@ -63,7 +63,7 @@ App.transformVideos = function (videos) {
         optVideo.link = video.link;
 
         if (video.pictures) {
-            optVideo.image_url = video.pictures.sizes[video.pictures.sizes.length - 1].link;
+            optVideo.image_url = video.pictures.sizes[video.pictures.sizes.length - 1].link_with_play_button;
         }
 
         optVideo.comments_count = video.metadata.connections.comments.total;
