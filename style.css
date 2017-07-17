@@ -46,11 +46,17 @@ body {
     background-color: #fff;
 }
 
-#next{
+#next {
     float: right;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-#prev{
-    cursor:pointer;
+#prev {
+    cursor: pointer;
+}
+
+.card,.card-img-top {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
 }
