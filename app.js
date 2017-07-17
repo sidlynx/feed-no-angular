@@ -1,3 +1,4 @@
+//The main app object
 var App = {
     data: {},
     allVideos: [],
@@ -11,12 +12,14 @@ var App = {
     }
 };
 
+//Reads and updates the parameter's object from the view
 App.updateParams = function () {
     App.params.$_search = $("#search").val();
     App.params.$_10_likes = $('#10_likes').is(":checked");
     App.params.$_items_to_take = parseInt($('input[name=items]:checked').val());
 };
 
+//Update the view with the selected videos
 App.render = function () {
     App.videos = App.allVideos;
     App.videos = App.searchVideos(App.videos, App.params.$_search);
@@ -37,6 +40,8 @@ App.render = function () {
     $('#target').html(rendered);
 
 };
+
+//Loads the videos from the json file
 App.loadVideos = function () {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -49,6 +54,8 @@ App.loadVideos = function () {
     xhttp.open("GET", "videos.json", true);
     xhttp.send();
 };
+
+//Transforms the video into a basic format with only needed properties
 App.transformVideos = function (videos) {
     return videos.map(function (video) {
         var optVideo = {};
@@ -85,6 +92,8 @@ App.transformVideos = function (videos) {
         return optVideo;
     })
 };
+
+//Filter videos by the description containing the search text in parameter
 App.searchVideos = function (videos, search) {
     var tempVideos = [];
     videos.forEach(function (video) {
@@ -94,6 +103,8 @@ App.searchVideos = function (videos, search) {
     });
     return tempVideos;
 };
+
+//Returns only the videos whose users have 10 likes or more
 App.filterVideos = function (videos) {
     var tempVideos = [];
     videos.forEach(function (video) {
@@ -101,39 +112,48 @@ App.filterVideos = function (videos) {
     });
     return tempVideos;
 };
+
+//Transforms the videos array to another array with the size chosen by the user
 App.paginateVideos = function (videos, items_per_page) {
     return _.chunk(videos, items_per_page);
 };
 
 
 $(document).ready(function () {
+    //On startup,load videos and render with default choices
     App.loadVideos();
 
+    //When the user changes the items per page params,the view is updated
     $('input[type=radio][name=items]').change(function () {
         App.updateParams();
         App.render();
     });
 
+    //When the user enters a search text,the view is updated
     $("#search").change(function () {
         App.updateParams();
         App.render();
     });
 
+    //When the user enters a search text,the view is updated
     $("#search").keyup(function () {
         App.updateParams();
         App.render();
     });
 
+    //When the user clicks the previous button,the view is updated
     $("#prev").click(function () {
         App.page--;
         App.render();
     });
 
+    //When the user clicks the next button,the view is updated
     $("#next").click(function () {
         App.page++;
         App.render();
     });
 
+    //When the user choose to show only videos from users who have more than 10 likes,the vview is updated
     $("#10_likes").change(function () {
         App.updateParams();
         App.render();
