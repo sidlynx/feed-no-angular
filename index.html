@@ -10,14 +10,11 @@
 </head>
 
 <body>
-<div class="container-fluid" style="height: 50px;">
+<div class="container-fluid header">
     <div class="row">
-        <nav class="navbar fixed-top navbar-light bg-faded" style="
-    height: 50px;padding:0px;
-background-color: rgba(255, 255, 255, 0.97);
-    border-top:3px solid #f15b27;border-bottom: 1px solid #e4e6e8;">
-            <div class="container" style="height: 100%;background-color: transparent;margin:auto;">
-                <div class="row" style="height: 50px !important;padding: 14px 0px 20px !important;">
+        <nav class="navbar fixed-top navbar-light bg-faded">
+            <div class="container">
+                <div class="row">
 
                 </div>
             </div>
@@ -29,18 +26,20 @@ background-color: rgba(255, 255, 255, 0.97);
 <div class="container-fluid">
     <div class="row">
         <div class="col-12" style="text-align:center;">
-            <img src="https://pbs.twimg.com/profile_banners/209708391/1447367241/1500x500"
-                 style="margin-left:auto;margin-right:auto;"
+            <img src="assets/cover.jpg"
+                 class="cover_photo"
+                 alt="cover photo"
+
             />
         </div>
     </div>
 </div>
 
-<div class="container" style="">
+<div class="container">
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-6" style="background-color:#fffa;">
-            <div style="background-color:#fff;padding:4px;border-radius:4px;margin-top:4px;">
+        <div class="col-6">
+            <div class="cmd">
                 <div><u>Items to sow:</u></div>
                 <div class="row">
                     <div class="col-4">
@@ -125,9 +124,13 @@ background-color: rgba(255, 255, 255, 0.97);
                 </div>
             </div>
 
-            <div style="margin-top:4px;background-color:#fff;">
-                <button class="btn btn-primary btn-sm" id="prev" style="cursor:pointer;">Prev</button>
-                <button class="btn btn-primary btn-sm" id="next" style="float: right;cursor:pointer;">Next</button>
+            <div class="row pagination">
+                <div class="col-6">
+                    <button class="btn btn-primary btn-sm" id="prev">Prev</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-primary btn-sm" id="next">Next</button>
+                </div>
             </div>
 
         </div>
@@ -182,18 +185,7 @@ background-color: rgba(255, 255, 255, 0.97);
                     </p>
                 </div>
             </div>
-
-
-
         {{/videosToShow}}
-
-
-
-
-
-
-
-
 </script>
 </body>
 
