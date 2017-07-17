@@ -57,6 +57,7 @@ App.transformVideos = function (videos) {
 
         if (optVideo.description) {
             optVideo.short_description = optVideo.description.substring(0, 20);
+            optVideo.htmlDescription = optVideo.description.replace(/(?:\r\n|\r|\n)/g, '<br />');
         }
 
         optVideo.name = video.name;
