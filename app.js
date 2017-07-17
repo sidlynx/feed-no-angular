@@ -43,8 +43,8 @@ App.loadVideos = function () {
     xhttp.send();
 }
 App.transformVideos = function (videos) {
-    var tempVideos = [];
-    videos.forEach(function (video) {
+
+    return videos.map(function(video){
         var optVideo = {};
         optVideo.id = video.resource_key;
         if (video.user.pictures) {
@@ -76,10 +76,8 @@ App.transformVideos = function (videos) {
         if (video.user.metadata.connections.likes.total) {
             optVideo.user_likes_count = video.user.metadata.connections.likes.total;
         }
-
-        tempVideos.push(optVideo);
+        return optVideo;
     })
-    return tempVideos;
 }
 App.searchVideos = function (videos, search) {
     var tempVideos = [];
