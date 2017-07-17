@@ -1,7 +1,7 @@
-##Notice
+## Notice
 This app assumes you have nodejs and npm installed on your local achine
 
-##How to:
+## How to:
 clone the repository to your local files
 ```
 git clone git@github.com:sidlynx/feed-no-angular.git
@@ -25,4 +25,5 @@ serve
 ```
 
 The app now is running on the port showed by serve command,now you can visit 
-http://localhost:5000.change 5000 with the port showed by the serve command
+http://localhost:5000/  
+**Change 5000 with the port showed by the serve command**
