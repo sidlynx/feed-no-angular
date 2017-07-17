@@ -50,6 +50,9 @@ App.transformVideos = function (videos) {
         if (video.user.pictures) {
             optVideo.user_image_url = video.user.pictures.sizes[video.user.pictures.sizes.length - 1].link;
         }
+        else{
+            optVideo.user_image_url = "assets/no-user-image.jpg";
+        }
         optVideo.user_name = video.user.name;
         optVideo.user_link = video.user.link;
 
