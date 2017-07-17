@@ -15,7 +15,17 @@
         <nav class="navbar fixed-top navbar-light bg-faded">
             <div class="container">
                 <div class="row">
-
+                    <div class="col-4">
+                        <div style="margin-top:-10px;color:#f15b27;cursor:pointer;"><i class="fa fa-2x fa-home"></i> <b style="font-size:20px;">Home</b></div>
+                    </div>
+                    <div class="col-4 text-center" style="color:#f15b27;">
+                        <i class="fa fa-vimeo"></i>
+                    </div>
+                    <div class="col-4">
+                        <input type="text" id="search" class="form-control" placeholder="search"
+                            style="margin-top:-10px;border-radius:20px;"
+                        />
+                    </div>
                 </div>
             </div>
         </nav>
@@ -25,8 +35,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12" style="text-align:center;">
-            <img src="assets/cover.jpg"
+        <div class="col-12" style="text-align:center;padding:0px;">
+            <img src="assets/cover.jpg" style="width:100%;"
                  class="cover_photo"
                  alt="cover photo"
 
@@ -39,8 +49,9 @@
     <div class="row">
         <div class="col-3">
             <div class="card" style="margin-top:4px;">
-                <div class="card-block text-center" style="background-image: url('assets/cover.jpg');background-size: cover;">
-                    <img src="assets/no-user-image.jpg" alt="Mohammed Hamdoune" 
+                <div class="card-block text-center"
+                     style="background-image: url('assets/cover.jpg');background-size: cover;">
+                    <img src="assets/no-user-image.jpg" alt="Mohammed Hamdoune"
                          style="max-width:50px;border-radius:50%;border:2px solid #fff;"/>
                 </div>
                 <div class="card-block text-center" style="font-weight: bold;">
@@ -50,7 +61,7 @@
         </div>
         <div class="col-6">
             <div class="cmd">
-                <div><u>Items to sow:</u></div>
+                <div><u>Items to show:</u></div>
                 <div class="row">
                     <div class="col-4">
                         <input type="radio" name="items" value="10" checked/> 10
@@ -65,10 +76,6 @@
                 <div>
                     <input type="checkbox" id="10_likes"/> SHow only videos from users that have more than 10 likes
                 </div>
-                <div>
-                    <input type="text" id="search" class="form-control" placeholder="search"/>
-                </div>
-
             </div>
 
 
@@ -196,6 +203,7 @@
                 </div>
             </div>
         {{/videosToShow}}
+
 </script>
 </body>
 
