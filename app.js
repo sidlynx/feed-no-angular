@@ -1,27 +1,34 @@
-var App = {};
-App.data = {};
-App.allVideos = [];
-App.videos = [];
-App.videosToShow = [];
-App.page = 0;
+var App = {
+    data: {},
+    allVideos: [],
+    videos: [],
+    videosToShow: [],
+    page: 0,
+    params: {
+        $_search: '',
+        $_10_likes: false,
+        $_items_to_take: 10
+    }
+};
+
+App.updateParams = function () {
+    App.params.$_search = $("#search").val();
+    App.params.$_10_likes = $('#10_likes').is(":checked");
+    App.params.$_items_to_take = parseInt($('input[name=items]:checked').val());
+};
 
 App.render = function () {
-    var $_search = $("#search").val();
-    var $_10_likes = $('#10_likes').is(":checked");
-    var $_items_to_take = parseInt($('input[name=items]:checked').val());
-
     App.videos = App.allVideos;
+    App.videos = App.searchVideos(App.videos, App.params.$_search);
 
-    App.videos = App.searchVideos(App.videos, $_search);
-
-    if ($_10_likes) {
+    if (App.params.$_10_likes) {
         App.videos = App.filterVideos(App.videos);
     }
 
     if (App.page < 0) App.page = 0;
-    else if (App.page > (App.paginateVideos(App.videos, $_items_to_take).length - 1)) App.page = App.paginateVideos(App.videos, $_items_to_take).length - 1;
+    else if (App.page > (App.paginateVideos(App.videos, App.params.$_items_to_take).length - 1)) App.page = App.paginateVideos(App.videos, App.params.$_items_to_take).length - 1;
 
-    App.videosToShow = App.paginateVideos(App.videos, $_items_to_take)[App.page];
+    App.videosToShow = App.paginateVideos(App.videos, App.params.$_items_to_take)[App.page];
 
 
     var template = $('#template').html();
@@ -29,11 +36,11 @@ App.render = function () {
     var rendered = Mustache.render(template, App);
     $('#target').html(rendered);
 
-}
+};
 App.loadVideos = function () {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             App.data = JSON.parse(this.responseText);
             App.allVideos = App.transformVideos(App.data.data);
             App.render();
@@ -41,16 +48,15 @@ App.loadVideos = function () {
     };
     xhttp.open("GET", "videos.json", true);
     xhttp.send();
-}
+};
 App.transformVideos = function (videos) {
-
-    return videos.map(function(video){
+    return videos.map(function (video) {
         var optVideo = {};
         optVideo.id = video.resource_key;
         if (video.user.pictures) {
             optVideo.user_image_url = video.user.pictures.sizes[video.user.pictures.sizes.length - 1].link;
         }
-        else{
+        else {
             optVideo.user_image_url = "assets/no-user-image.jpg";
         }
         optVideo.user_name = video.user.name;
@@ -78,40 +84,43 @@ App.transformVideos = function (videos) {
         }
         return optVideo;
     })
-}
+};
 App.searchVideos = function (videos, search) {
     var tempVideos = [];
     videos.forEach(function (video) {
         if (video.description && video.description.indexOf(search) >= 0) {
             tempVideos.push(video);
         }
-    })
+    });
     return tempVideos;
-}
+};
 App.filterVideos = function (videos) {
     var tempVideos = [];
     videos.forEach(function (video) {
         if (video.user_likes_count >= 0) tempVideos.push(video);
-    })
+    });
     return tempVideos;
-}
+};
 App.paginateVideos = function (videos, items_per_page) {
     return _.chunk(videos, items_per_page);
-}
+};
 
 
 $(document).ready(function () {
     App.loadVideos();
 
     $('input[type=radio][name=items]').change(function () {
+        App.updateParams();
         App.render();
     });
 
     $("#search").change(function () {
+        App.updateParams();
         App.render();
     });
 
     $("#search").keyup(function () {
+        App.updateParams();
         App.render();
     });
 
@@ -126,6 +135,7 @@ $(document).ready(function () {
     });
 
     $("#10_likes").change(function () {
+        App.updateParams();
         App.render();
     });
 });

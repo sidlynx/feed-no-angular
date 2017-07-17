@@ -10,20 +10,14 @@
 </head>
 
 <body>
-<div class="container-fluid" style="height: 50px;
-    ">
-    <div class="row" style="border:1px solid green;">
+<div class="container-fluid" style="height: 50px;">
+    <div class="row">
         <nav class="navbar fixed-top navbar-light bg-faded" style="
     height: 50px;padding:0px;
 background-color: rgba(255, 255, 255, 0.97);
-/*
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-    */
     border-top:3px solid #f15b27;border-bottom: 1px solid #e4e6e8;">
-            <div class="container no-paddin no-margi" style="height: 100%;background-color: transparent;margin:auto;">
-                <div class="row no-paddin no-margi" style="height: 50px !important;padding: 14px 0px 20px !important;">
+            <div class="container" style="height: 100%;background-color: transparent;margin:auto;">
+                <div class="row" style="height: 50px !important;padding: 14px 0px 20px !important;">
 
                 </div>
             </div>
@@ -47,24 +41,24 @@ background-color: rgba(255, 255, 255, 0.97);
         <div class="col-3"></div>
         <div class="col-6" style="background-color:#fffa;">
             <div style="background-color:#fff;padding:4px;border-radius:4px;margin-top:4px;">
-                <div ><u>Items to sow:</u></div>
-                    <div class="row">
-                        <div class="col-4">
-                            <input type="radio" name="items" value="10" checked/> 10
-                        </div>
-                        <div class="col-4">
-                            <input type="radio" name="items" value="25"/> 25
-                        </div>
-                        <div class="col-4">
-                            <input type="radio" name="items" value="50"/> 50
-                        </div>
+                <div><u>Items to sow:</u></div>
+                <div class="row">
+                    <div class="col-4">
+                        <input type="radio" name="items" value="10" checked/> 10
                     </div>
-                    <div>
-                        <input type="checkbox" id="10_likes"/> SHow only videos from users that have more than 10 likes
+                    <div class="col-4">
+                        <input type="radio" name="items" value="25"/> 25
                     </div>
-                    <div>
-                        <input type="text" id="search" class="form-control" placeholder="search"/>
+                    <div class="col-4">
+                        <input type="radio" name="items" value="50"/> 50
                     </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="10_likes"/> SHow only videos from users that have more than 10 likes
+                </div>
+                <div>
+                    <input type="text" id="search" class="form-control" placeholder="search"/>
+                </div>
 
             </div>
 
@@ -192,6 +186,11 @@ background-color: rgba(255, 255, 255, 0.97);
 
 
         {{/videosToShow}}
+
+
+
+
+
 
 
 
