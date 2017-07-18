@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-7">
             <div class="cmd">
                 <div><u>Items to show:</u></div>
                 <div class="row">
@@ -141,12 +141,13 @@
                 </div>
             </div>
 
-            <div class="row pagination">
-                <div class="col-6">
+            <div class="row pagination" style="margin:0px;margin-top:10px;">
+                <!--div-- class="col-6">
                     <button class="btn btn-primary btn-sm" id="prev">Prev</button>
-                </div>
-                <div class="col-6">
-                    <button class="btn btn-primary btn-sm" id="next">Next</button>
+                </div-->
+                <div class="col-6"></div>
+                <div class="col-6" style="text-align:right;padding:0px;">
+                    <button class="btn btn-secondary" id="next" style="float: right;padding-left:20px;padding-right:20px;font-weight:bold;">Next</button>
                 </div>
             </div>
 
@@ -168,38 +169,42 @@
 
 <script id="template" type="x-tmpl-mustache">
         {{#videosToShow}}
-            <div class="card" style="margin-top:4px;" id="{{id}}">
-                <div class="card-block" style="padding: 0px;">
-                    <div class="row">
-                        <div class="col-2" style="text-align:center;">
-                            <img src="{{user_image_url}}" style="max-width:48px;border-radius:50%;margin:auto;"/>
+            <div class="display:table;width:100%;">
+                <div style="display:table-cell;width:50px;">
+                    <a href="{{user_link}}"><img src="{{user_image_url}}" style="max-width:48px;border-radius:50%;margin:auto;"/></a>
+                </div>
+                <div style="display:table-cell;">
+                    <div class="card" style="margin-top:4px;" id="{{id}}">
+                        <div class="card-block" style="padding: 4px;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                <a href="{{user_link}}" style="font-weight:bold;">{{user_name}}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 12px;color:grey;">
+                                                <i class="fa fa-eye"></i> 125 | <i class="fa fa-comment"></i> {{comments_count}} | <i class="fa fa-heart"></i> {{likes_count}}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-8">
-                            <table style="width:100%;">
-                                <tr>
-                                    <td>
-                                        <a href="{{user_link}}" style="font-weight:bold;">{{user_name}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size: 12px;color:grey;">
-                                        <i class="fa fa-eye"></i> 125 | <i class="fa fa-comment"></i> {{comments_count}} | <i class="fa fa-heart"></i> {{likes_count}}
-                                    </td>
-                                </tr>
-                            </table>
+                        <img class="card-img-top"
+                             style="max-width:100%;cursor:pointer;"
+                             src="{{image_url}}" alt="Card image cap" onclick="location.href='{{link}}'">
+                        <div class="card-block">
+                            <h4 class="card-title">
+                                <a href="{{link}}">{{name}}</a>
+                            </h4>
+                            <p class="card-text full-description" style="font-size:13px;">
+                                {{description}}
+                            </p>
                         </div>
                     </div>
-                </div>
-                <img class="card-img-top"
-                     style="max-width:100%;cursor:pointer;"
-                     src="{{image_url}}" alt="Card image cap" onclick="location.href='{{link}}'">
-                <div class="card-block">
-                    <h4 class="card-title">
-                        <a href="{{link}}">{{name}}</a>
-                    </h4>
-                    <p class="card-text full-description" style="font-size:13px;">
-                        {{description}}
-                    </p>
                 </div>
             </div>
         {{/videosToShow}}
