@@ -72,8 +72,24 @@ App.transformVideos = function (videos) {
         optVideo.description = video.description;
 
         if (optVideo.description) {
-            optVideo.short_description = optVideo.description.substring(0, 20);
-            optVideo.htmlDescription = optVideo.description.replace(/(?:\r\n|\r|\n)/g, '<br />');
+            if (optVideo.description.length >= 300) {
+                optVideo.shortDescription =
+                    {
+                        content: optVideo.description.substring(0, 300)
+                    }
+                optVideo.longDescription =
+
+                    {
+                        content: optVideo.description
+                    }
+            }
+            else{
+                optVideo.fullDescription = {
+                    content : optVideo.description
+                }
+            }
+
+            //optVideo.htmlDescription = optVideo.description.replace(/(?:\r\n|\r|\n)/g, '<br />');
         }
 
         optVideo.name = video.name;
@@ -118,6 +134,16 @@ App.paginateVideos = function (videos, items_per_page) {
     return _.chunk(videos, items_per_page);
 };
 
+App.more = function(el){
+    $(el).parent().parent().find(".long").removeClass("hidden");
+    $(el).parent().parent().find(".short").addClass("hidden");
+}
+
+App.less = function(el){
+    $(el).parent().parent().find(".long").addClass("hidden");
+    $(el).parent().parent().find(".short").removeClass("hidden");
+}
+
 
 $(document).ready(function () {
     //On startup,load videos and render with default choices
@@ -158,4 +184,14 @@ $(document).ready(function () {
         App.updateParams();
         App.render();
     });
+
+
+    $(".more").click(function(){
+alert("t");
+    })
+
+    $(".less").click(function(){
+alert("rr");
+    })
+
 });

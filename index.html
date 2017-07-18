@@ -141,7 +141,7 @@
                 </div>
             </div>
 
-            <div class="row pagination" style="margin:0px;margin-top:10px;">
+            <div class="row pagination" style="margin: 10px 0px 0px;">
                 <!--div-- class="col-6">
                     <button class="btn btn-primary btn-sm" id="prev">Prev</button>
                 </div-->
@@ -200,9 +200,21 @@
                             <h4 class="card-title">
                                 <a href="{{link}}">{{name}}</a>
                             </h4>
-                            <p class="card-text full-description" style="font-size:13px;">
-                                {{description}}
-                            </p>
+                            {{#fullDescription}}
+                                <p class="card-text description full" style="font-size:13px;">
+                                    {{content}}
+                                </p>
+                            {{/fullDescription}}
+                            {{#shortDescription}}
+                                <p class="card-text description short" style="font-size:13px;">
+                                    {{content}}  <u style="color:#0275d8;font-weight:bold;cursor:pointer;" class="more" onclick="App.more(this)">Show more</u>
+                                </p>
+                            {{/shortDescription}}
+                            {{#longDescription}}
+                                <p class="card-text description long hidden" style="font-size:13px;">
+                                    {{content}}  <u style="color:#0275d8;font-weight:bold;cursor:pointer;" class="less" onclick="App.less(this)">Show less</u>
+                                </p>
+                            {{/longDescription}}
                         </div>
                     </div>
                 </div>
