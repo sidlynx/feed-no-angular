@@ -1,8 +1,8 @@
 ## Notice
-This app assumes you have nodejs and npm installed on your local achine
+This app assumes you have nodejs and npm installed on your local machine
 
 ## How to:
-clone the repository to your local files
+clone the repository to your local machine
 ```
 git clone git@github.com:sidlynx/feed-no-angular.git
 ```
