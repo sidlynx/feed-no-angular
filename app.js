@@ -134,11 +134,13 @@ App.paginateVideos = function (videos, items_per_page) {
     return _.chunk(videos, items_per_page);
 };
 
+//Show more full description
 App.more = function(el){
     $(el).parent().parent().find(".long").removeClass("hidden");
     $(el).parent().parent().find(".short").addClass("hidden");
 }
 
+//function to show less description
 App.less = function(el){
     $(el).parent().parent().find(".long").addClass("hidden");
     $(el).parent().parent().find(".short").removeClass("hidden");
@@ -184,14 +186,5 @@ $(document).ready(function () {
         App.updateParams();
         App.render();
     });
-
-
-    $(".more").click(function(){
-alert("t");
-    })
-
-    $(".less").click(function(){
-alert("rr");
-    })
 
 });
